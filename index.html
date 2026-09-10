@@ -153,10 +153,106 @@
     .poster-close{top:auto; bottom:-52px; right:0;}
   }
 
+  /* ---------- ARTIST PROFILE MODAL ---------- */
+  .artist-modal{
+    position:fixed;
+    inset:0;
+    z-index:200;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:40px 20px;
+    background:rgba(10,7,4,0.92);
+    backdrop-filter:blur(6px);
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .3s ease;
+  }
+  .artist-modal.open{
+    opacity:1;
+    visibility:visible;
+  }
+  .artist-modal-inner{
+    position:relative;
+    width:min(560px, 92vw);
+    max-height:88vh;
+    background:#262425;
+    border:1px solid var(--line);
+    overflow-y:auto;
+  }
+  .artist-modal-photo{
+    background:#262425;
+    max-height:50vh;
+    display:flex;
+    justify-content:center;
+    overflow:hidden;
+  }
+  .artist-modal-photo img{
+    width:auto;
+    max-width:100%;
+    height:auto;
+    max-height:50vh;
+    object-fit:contain;
+  }
+  .artist-modal-body{padding:32px 32px 40px;}
+  .artist-modal-role{
+    font-size:12px;
+    letter-spacing:0.12em;
+    color:var(--gold);
+    font-weight:500;
+  }
+  .artist-modal-name{
+    font-family:var(--serif);
+    font-size:26px;
+    color:var(--ink);
+    margin-top:6px;
+    margin-bottom:22px;
+  }
+  .artist-modal-bio dt{
+    color:var(--ink);
+    font-weight:500;
+    font-size:13px;
+    margin-top:16px;
+  }
+  .artist-modal-bio dt:first-child{margin-top:0;}
+  .artist-modal-bio dd{
+    margin-top:5px;
+    font-size:14px;
+    line-height:1.7;
+    color:var(--ink-dim);
+    font-weight:300;
+  }
+  .artist-modal-bio ul{padding-left:18px; margin-top:2px;}
+  .artist-modal-bio li{margin-top:4px; list-style:disc;}
+  .artist-modal-bio p{
+    font-size:14px;
+    line-height:1.8;
+    color:var(--ink-dim);
+    font-weight:300;
+    margin-top:14px;
+  }
+  .artist-modal-bio p:first-child{margin-top:0;}
+  .artist-close{
+    position:absolute;
+    top:14px;
+    right:14px;
+    width:36px; height:36px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:1px solid var(--line);
+    color:var(--ink);
+    font-size:20px;
+    line-height:1;
+    background:rgba(22,16,9,0.6);
+    transition:color .2s ease, border-color .2s ease;
+    z-index:2;
+  }
+  .artist-close:hover{color:var(--gold-soft); border-color:var(--gold);}
+
   /* ---------- HERO ---------- */
   .hero{
     position:relative;
-    min-height:calc(100svh - 64px);
     display:flex;
     align-items:stretch;
     background:
@@ -177,8 +273,9 @@
     align-items:center;
     text-align:center;
     gap:22px;
-    padding: 100px 6vw 100px;
+    padding: 108px 6vw;
     max-width:760px;
+    margin:0 auto;
   }
   .eyebrow{
     font-family:var(--sans);
@@ -264,8 +361,7 @@
   .btn-ghost:hover{border-color:var(--gold); color:var(--gold-soft);}
 
   @media (max-width: 860px){
-    .hero{min-height:auto;}
-    .hero-copy{padding:56px 24px 64px;}
+    .hero-copy{padding:64px 24px;}
     .hero-title{font-size:clamp(44px,15vw,64px);}
   }
 
@@ -356,15 +452,16 @@
     gap:36px 28px;
   }
   .cast-card{text-align:left;}
+  .cast-card.has-bio .cast-photo{cursor:pointer;}
   .cast-photo{
-    aspect-ratio:1/1;
     overflow:hidden;
     background:var(--bg-panel-2);
     border-radius:3px;
   }
   .cast-photo img{
-    width:100%; height:100%;
-    object-fit:cover;
+    width:100%;
+    height:auto;
+    object-fit:contain;
     object-position:top center;
   }
   .cast-role{
@@ -379,6 +476,28 @@
     font-size:19px;
     color:var(--ink);
     margin-top:4px;
+  }
+  .cast-bio{
+    display:none;
+    margin-top:10px;
+    font-size:13px;
+    line-height:1.65;
+    color:var(--ink-dim);
+    font-weight:300;
+  }
+  .cast-bio dt{
+    color:var(--ink);
+    font-weight:500;
+    margin-top:10px;
+  }
+  .cast-bio dt:first-child{margin-top:0;}
+  .cast-bio ul{
+    margin-top:4px;
+    padding-left:16px;
+  }
+  .cast-bio li{
+    margin-top:3px;
+    list-style:disc;
   }
   @media (max-width:700px){
     .cast-grid{grid-template-columns:repeat(2,1fr);}
@@ -447,10 +566,21 @@
     gap:24px;
   }
   .info-cta p{font-size:14px; color:var(--ink-dim); max-width:36ch;}
+  .info-cta-buttons{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+  }
   @media (max-width:700px){
     .info-grid{grid-template-columns:1fr;}
     .info-card{padding:40px 24px;}
   }
+
+  /* ---------- DIRECTIONS ---------- */
+  .directions{background:var(--bg-deep);}
+  .directions .info-block dd{font-size:16px; font-family:var(--sans); font-weight:300; color:var(--ink-dim); line-height:1.7;}
+  .directions .info-block dd b{color:var(--ink); font-weight:500;}
+  .map-btn-wrap{margin-top:40px; padding-top:32px; border-top:1px solid var(--line);}
 
   /* ---------- FOOTER ---------- */
   footer{
@@ -496,6 +626,7 @@
     <li><button data-target="about" data-section="about">작품 소개</button></li>
     <li><button data-target="cast" data-section="cast">출연진</button></li>
     <li><button data-target="info" data-section="info">공연 안내</button></li>
+    <li><button data-target="directions" data-section="directions">오시는 길</button></li>
   </ul>
 </nav>
 
@@ -535,9 +666,7 @@
       <p>극심한 가뭄과 기적, 바알 신의 예언자들과 벌이는 숨 막히는 대결, 그리고 불마차를 타고 하늘로 승천하는 극적인 장면들이 음악으로 생생하게 펼쳐집니다. 웅장하고 압도적인 합창과 영혼을 울리는 아름다운 아리아가 듣는 이의 마음을 사로잡습니다. 이번 연주회를 통해 멘델스존이 빚어낸 거대한 화음과 뜨거운 영감을 온전히 경험하시길 바랍니다.</p>
     </div>
     <div class="composer-card">
-      <a href="https://raw.githubusercontent.com/seouloratorio/The-88th-Regular-Concert-of-Seouloratorio/main/Felix%20Mendelssohn.jpg" target="_blank" rel="noopener">
-        <img src="assets/mendelssohn.jpg" alt="펠릭스 멘델스존">
-      </a>
+      <img src="https://raw.githubusercontent.com/seouloratorio/The-88th-Regular-Concert-of-Seouloratorio/main/Felix%20Mendelssohn.jpg" alt="펠릭스 멘델스존">
       <div class="cap">Felix Mendelssohn
         <span>1809 – 1847</span>
       </div>
@@ -560,36 +689,93 @@
     </div>
 
     <div class="cast-grid">
-      <div class="cast-card">
-        <div class="cast-photo"><a href="https://raw.githubusercontent.com/seouloratorio/The-88th-Regular-Concert-of-Seouloratorio/main/%EC%95%84%ED%9E%98%EC%A7%90%EB%A8%B8%EB%A7%8C.jpg" target="_blank" rel="noopener"><img src="assets/conductor.jpg" alt="지휘 Achim Zimmermann"></a></div>
-        <div class="cast-role">CONDUCTOR</div>
-        <div class="cast-name">Achim Zimmermann</div>
-      </div>
-      <div class="cast-card">
-        <div class="cast-photo"><a href="https://raw.githubusercontent.com/seouloratorio/The-88th-Regular-Concert-of-Seouloratorio/main/%EC%86%8C%ED%94%84%EB%9D%BC%EB%85%B8%20%EC%9D%B4%EC%9E%AC%ED%98%84.jpg" target="_blank" rel="noopener"><img src="assets/soprano.jpg" alt="소프라노 이해연"></a></div>
-        <div class="cast-role">SOPRANO</div>
-        <div class="cast-name">이해연</div>
-      </div>
-      <div class="cast-card">
-        <div class="cast-photo"><a href="https://raw.githubusercontent.com/seouloratorio/The-88th-Regular-Concert-of-Seouloratorio/main/%EC%95%8C%ED%86%A0%EC%98%A4%EC%8A%B9%EC%9D%80.jpg" target="_blank" rel="noopener"><img src="assets/alto.jpg" alt="알토 오승은"></a></div>
-        <div class="cast-role">ALTO</div>
-        <div class="cast-name">오승은</div>
-      </div>
-      <div class="cast-card">
-        <div class="cast-photo"><a href="https://raw.githubusercontent.com/seouloratorio/The-88th-Regular-Concert-of-Seouloratorio/main/%ED%85%8C%EB%84%88%20%EA%B9%80%EC%84%B1%EC%9E%AC.jpg" target="_blank" rel="noopener"><img src="assets/tenor.jpg" alt="테너 김성재"></a></div>
-        <div class="cast-role">TENOR</div>
-        <div class="cast-name">김성재</div>
-      </div>
-      <div class="cast-card">
-        <div class="cast-photo"><a href="https://raw.githubusercontent.com/seouloratorio/The-88th-Regular-Concert-of-Seouloratorio/main/%EB%B0%94%EB%A6%AC%ED%86%A4%20%EC%9D%B4%ED%99%98.jpg" target="_blank" rel="noopener"><img src="assets/baritone.jpg" alt="바리톤 안환"></a></div>
-        <div class="cast-role">BARITONE</div>
-        <div class="cast-name">안환</div>
-      </div>
-      <div class="cast-card">
-        <div class="cast-photo"><a href="https://raw.githubusercontent.com/seouloratorio/The-88th-Regular-Concert-of-Seouloratorio/main/%EC%98%A4%EB%A5%B4%EA%B0%84%20%EB%B0%95%EC%A4%80%ED%98%B8.jpg" target="_blank" rel="noopener"><img src="assets/organ.jpg" alt="오르간 박준호"></a></div>
-        <div class="cast-role">ORGAN</div>
-        <div class="cast-name">박준호</div>
-      </div>
+  <!-- 지휘자 Achim Zimmermann -->
+  <div class="cast-card has-bio">
+    <div class="cast-photo">
+      <img src="https://raw.githubusercontent.com/seouloratorio/The-88th-Regular-Concert-of-Seouloratorio/main/Achim_Zimmermann.jpg" alt="지휘자 Achim Zimmermann">
+    </div>
+    <div class="cast-role">CONDUCTOR</div>
+    <div class="cast-name">Achim Zimmermann</div>
+    <dl class="cast-bio">
+      <dd>
+        <p>아힘 짐머만은 1958년 드레스덴 근교 딥폴디스발데에서 태어나 1969년부터 77년 사이에 드레스덴 십자가 합창단원으로 입단했다. 또한 바이마르의 프란츠 리스트(Franz Liszt) 음대에서 합창단과 오케스트라 지휘를 수학했으며 그 후 독일과 미국에서 헬무트 릴링(Helmuth Rilling)국제 지휘 세미나에 참가했다.</p>
+        <p>1989년, 짐머만(Achim Zimmermann)은 베를리너 징아카데미(Berliner Singakademie)의 지휘자로 초빙되었다. 그는 수많은 앙상블과 협연을 통해 폭넓고 광범위한 레퍼토리를 확보하고 있다. 바하, 멘델스존 작품을 비롯하여 20세기 전반기의 합창 교향곡과 아카펠라 곡들은 그가 다루고 있는 주요 레퍼토리이다. 또한 매해 정기적으로 바흐 칸타타를 공연하고 있다.</p>
+        <p>짐머만(Achim Zimmermann)은 베를린 한스 아이슬러(Hanns Eisler) 음대에서 합창 지휘(1993년~1998년) 및 교수직(1991년~2001년)을 역임하였다. 2002년 1월부터는 베를린너 징아카데미(Berliner Singakademie)와 바흐 합창단 그리고 카이저 빌헬름 기념교회의 바흐 콜레기움을 모두 지휘하고 있다. 2015년에는 자신의 공로에 대한 독일 연방 공로 십자 훈장을 받는 영광을 안게 되었다.</p>
+      </dd>
+    </dl>
+  </div>
+      <div class="cast-card has-bio">
+    <div class="cast-photo">
+      <img src="https://raw.githubusercontent.com/seouloratorio/The-88th-Regular-Concert-of-Seouloratorio/main/Soprano_LeeHaeYeon.jpg" alt="소프라노 이해연">
+    </div>
+    <div class="cast-role">SOPRANO</div>
+    <div class="cast-name">이해연</div>
+    <dl class="cast-bio">
+      <dd>
+        <p>소프라노 이해연은 예원학교와 서울예술고등학교를 거쳐 이화여자대학교 음악대학 성악과를 졸업하였다. International Bach Wettbewerb Leipzig 장학생으로 선발되어 독일로 유학하였으며, 독일 슈투트가르트 국립음대에서 오페라과 석사과정 및 성악과 최고연주자과정(C.A.S)을 졸업하였다.</p>
+        <p>2026 Lyndon Woodside Oratorio Solo Competition에서 2위에 입상하였으며, Mendelssohn &lt;Paulus&gt;, Händel &lt;Dixit Dominus&gt; 등의 오라토리오 작품에서 솔리스트로 협연하였다. 오페라 무대에서는 &lt;Le Nozze di Figaro&gt;의 Susanna, &lt;Gianni Schicchi&gt;의 Lauretta, &lt;Dialogues des Carmélites&gt;의 Constance 역으로 출연하였다.</p>
+        <p>현재 부천시립합창단 상임단원이며, 서초문화재단 제5기 '서초M스타즈' 단원으로 활동하고 있다.</p>
+      </dd>
+    </dl>
+  </div>
+      <div class="cast-card has-bio">
+    <div class="cast-photo">
+      <img src="https://raw.githubusercontent.com/seouloratorio/The-88th-Regular-Concert-of-Seouloratorio/main/Alto_OhSeungEun.jpg" alt="알토 오승은">
+    </div>
+    <div class="cast-role">ALTO</div>
+    <div class="cast-name">오승은</div>
+    <dl class="cast-bio">
+      <dd>
+        <p>메조소프라노/알토 오승은은 숙명여자대학교 음악대학 성악과에서 양기영 교수를 사사하며 학사과정을 마친 후, 파리국립음악원 최고연주자과정에서 Elsa Maurus 교수, 파리고등사범음악원에서 Jean-Philippe Courtis 교수에게 사사하였으며, 독일 자르브뤼켄 국립음대에서 Yaron Windmüller 교수 사사로 성악 석사과정을 우수한 성적으로 졸업하였다.</p>
+        <p>프랑스 Les Clés d'Or 국제 콩쿠르 성악 부문 1위를 비롯하여 국내외 다수 콩쿠르에서 입상하며 입지를 다졌다. 프랑스 Besançon International Competition 오페라 부문 솔리스트로 참여하였고, 2021년 제주도립 관악오케스트라와 협연하였다. 한국과 유럽에서 베토벤 &lt;Missa Solemnis&gt;, 바흐 &lt;Johannes-Passion&gt;, 모차르트 &lt;Requiem&gt;을 포함한 다수의 미사곡 및 종교음악 작품에서 솔리스트로 활동하였으며, 오페라 &lt;Così fan tutte&gt;, &lt;Pelléas et Mélisande&gt;, &lt;Semele&gt;, &lt;Eugene Onegin&gt;, &lt;Suor Angelica&gt; 등 다수의 오페라에도 참여하였다.</p>
+        <p>현재 독일 도이체 오퍼 베를린 Deutsche Oper Berlin의 2. Alto 단원으로 재직하며 베를린을 중심으로 풍부한 무대 경험을 쌓고 있으며, 국내외를 오가며 오페라 연주자 및 솔리스트로 왕성한 연주 활동을 이어가고 있다.</p>
+      </dd>
+    </dl>
+  </div>
+      <div class="cast-card has-bio">
+    <div class="cast-photo">
+      <img src="https://raw.githubusercontent.com/seouloratorio/The-88th-Regular-Concert-of-Seouloratorio/main/Tenor_KimSungJae.jpg" alt="테너 김성재">
+    </div>
+    <div class="cast-role">TENOR</div>
+    <div class="cast-name">김성재</div>
+    <dl class="cast-bio">
+      <dd>
+        <p>탄탄한 음악적 기초와 깊이 있는 해석력을 바탕으로 호소력 짙은 음성을 선사하는 테너 김성재는 서울예술고등학교를 거쳐 서울대학교 성악과를 졸업하였고, 코리아체임버오케스트라 콩쿠르 성악 부문 입상을 통해 실력을 인정받았다.</p>
+        <p>그는 독일 Deutsche Oper Berlin을 비롯한 유럽 주요 무대에서 활동하며 국제적인 경험을 쌓았다. 오페라 &lt;카르멘&gt;, &lt;보리스 고두노프&gt;, &lt;마술피리&gt;, &lt;헨젤과 그레텔&gt;, &lt;투란도트&gt; 등 다양한 작품에 출연하였다. 특히 독일 창작오페라 &lt;Schwarzer Peter&gt;, 독일 국영방송 ZDF에 출연함으로써 국제무대에서의 입지를 더욱 공고히 했다. 또한 코리안 심포니 오케스트라 창단 15주년 기념음악회와 아르떼 심포니 오케스트라 정기연주회 등에서 협연자로 출연하여 뛰어난 음악성을 선보였다. 세종시 공연장 상주단체 육성지원사업 창작공연 &lt;오페라칸타타-붉은지구&gt;에 출연하는 등 현대 창작 작품에도 적극적으로 참여하고 있다. 오라토리움 전문예술단체 서울오라토리오가 주최한 정기연주회 헨델 &lt;메시아&gt; 무대에 솔리스트로 출연해 오라토리오의 정통적인 해석과 깊이있는 음악을 들려주었다.</p>
+        <p>현재 전문연주자로서 국내외 오페라와 오라토리오, 콘서트 무대, 그리고 창작 작품을 아우르며 폭넓은 예술적 스펙트럼을 보여주고 있으며, 자신만의 음악 세계를 더욱 확장해가며 활발한 활동을 이어가고 있다.</p>
+      </dd>
+    </dl>
+  </div>
+ <div class="cast-card has-bio">
+    <div class="cast-photo">
+      <img src="https://raw.githubusercontent.com/seouloratorio/The-88th-Regular-Concert-of-Seouloratorio/main/Baritone%20Ahn%20Hwan.jpg" alt="바리톤 안환">
+    </div>
+    <div class="cast-role">BARITONE</div>
+    <div class="cast-name">안환</div>
+    <dl class="cast-bio">
+      <dd>
+        <p>바리톤 안환은 가톨릭대학교 음악과를 졸업한 후 이탈리아 밀라노 베르디 국립음악원 성악과 석사과정을 졸업하였다. 이후 스칼라 아카데미 오페라 가수 전문과정을 수료하며 무대 경험과 음악적 역량을 쌓았다. Ponte 국제성악콩쿠르에서 1위 및 특별상, Vox Mutinae 'Nicolaj Ghiaurov' 국제성악콩쿠르 3위, San Colombano 국제종교음악콩쿠르 2위를 수상하였다.</p>
+        <p>이탈리아 스칼라 아카데미 재학 중 밀라노 라 스칼라 극장에서 오페라 &lt;리골레토&gt;, &lt;잔니 스키키&gt;, &lt;낙소스섬의 아리아드네&gt;, &lt;죽음의 도시&gt;에 출연하였다. 영산아트홀에서의 귀국 독창회를 시작으로, 서울시오페라단과 광주시립오페라단의 오페라 &lt;라 보엠&gt;, 성남문화재단 제작 오페라 &lt;나비부인&gt;에 출연하였으며, 예술의전당 기획 창작오페라 &lt;The Rising World – 물의 정령&gt; 출연하는 등 창작오페라에 이르기까지 폭넓은 무대 활동을 이어가고 있다.</p>
+        <p>서울오라토리오 주최 하이든 &lt;천지창조-아담역&gt;와 '영혼이 울리는 음악회'에 바리톤 솔리스트로 출연하였고, 이탈리아 Novara 대성당에서 열린 포레 &lt;레퀴엠&gt;, 모데나시 주최 로시니의 &lt;작은 장엄미사&gt;에 솔리스트로 무대에 올랐다. 또한 베토벤 &lt;제9번 교향곡&gt;의 바리톤 솔로와 부산국제예술가곡축제 '한·중·일 가곡의 밤'을 비롯한 다양한 콘서트와 음악회에서 오페라와 가곡, 종교음악을 아우르는 레퍼토리를 선보였다. 후학 양성에도 힘써 선화예술고등학교 강사를 역임하였으며, 가톨릭대학교 음악과 외래교수로 재직 중이다.</p>
+      </dd>
+    </dl>
+  </div>
+      <div class="cast-card has-bio">
+    <div class="cast-photo">
+      <img src="https://raw.githubusercontent.com/seouloratorio/The-88th-Regular-Concert-of-Seouloratorio/main/Organist_ParkJunHo.jpg" alt="오르간 박준호">
+    </div>
+    <div class="cast-role">ORGAN</div>
+    <div class="cast-name">박준호</div>
+    <dl class="cast-bio">
+      <dd>
+        <p>한국의 오르가니스트 박준호는 유년 시절 피아노를 통해 음악을 처음 접한 후, 한국예술종합학교 음악원 예비학교에서 오르간 연주를 본격적으로 배우기 시작했다. 고등학교 재학 중 한예종 음악원 예술영재로 선발되어 예술사 학부에 진학한 후, 오자경 교수에게 사사했다. 이후 독일 슈투트가르트 국립음악대학에서 욘 라우크빅 교수에게, 프랑스 툴루즈의 콘서바토리에서 미쉘 부바르 교수에게 오르간 음악을 사사하였다.</p>
+        <p>박준호는 2006년 오스트리아 그라츠 국제 오르간 콩쿠르에서 우승을 차지하며 바흐 특별상을 수상했고, 2007년 스위스 생모리스 국제 오르간 콩쿠르에서 2위 및 모차르트 특별상을, 2008년 일본 도쿄-무사시노 국제 오르간 콩쿠르에서 3위와 청중상을 수상하며 국제 무대에서 두각을 나타냈다. 해외에서의 경험이 필수적인 오르간 분야에서 당시 유학 전 이었던 박준호의 이같은 성과는 KBS 뉴스 등 언론을 통해 보도되었다.</p>
+        <p>또한 박준호는 오랜 역사를 이어온 독일 뉘른베르크 콩쿠르(2009)와 아일랜드 더블린 오르간 콩쿠르(2011)에서 우승, 프랑스 샤르트르(2012)와 독일 브레멘 아르프 슈니트거 국제 오르간 콩쿠르(2014)에서 준우승을 거두며, 국제적인 연주활동을 이어왔다. 그의 연주 활동은 영국 런던 웨스트민스터 성당과 웨스트민스터 사원, 세인트 올번스 오르간 페스티벌, 독일 안스바흐 바흐축제, 트리어 콘스탄틴 바실리카, 할레 마르크트 키르헤, 슈투트가르트 스티프츠 키르헤, 스페인의 낀세나 무지깔, 마드리드 국립음악당 등 세계 유수의 무대에서 펼쳐졌다. 또한 일본 도쿄의 오페라시티, 무사시노시 음악당, 동경대학교, 요코하마 미나토미라이 홀, 나고야 아이치현 예술극장, 사이타마 리리아 홀, 코오베, 히메지 콘서트홀, 아트타워 미토 등지에서 초청되어 활발한 연주활동를 이어가고 있다.</p>
+        <p>박준호는 미국 텍사스 오스틴 대학교에서 오르간 교수로 재직 했으며 동시에 Redeemer Presbyterian Church의 오르가니스트로 활동했고, 예일대학교로부터 아시아 오르간 음악에 대한 강연자로 초청 되기도 했다. 현재 한국예술종합학교 음악원 교수로 후학을 양성하고 있다. 2019년 이후, 그는 롯데콘서트홀 기획공연 '오르간 오딧세이' 시리즈의 연주자로 활동하며 오르간 음악을 대중에게 널리 알리는 데 힘쓰고 있다. 그는 인천시립교향악단, 성남시립교향악단, 한경 필하모닉, 홍콩 차이니즈 오케스트라의 객원연주자 및 협연자로 무대에 올랐으며, 서울, 인천, 부천, 대전시립합창단의 정기연주회에서 협연하였다. 그의 연주는 다수의 해외 언론에서 호평을 받아왔고 국내의 KBS 음악실, SBS 문화가산책 등 여러 방송 프로그램을 통해 방영 되었으며, 또한 다양한 형태의 연주회를 통해 오르간 음악의 깊이를 전달하고 있다.</p>
+      </dd>
+    </dl>
+  </div>
+</div>
     </div>
   </div>
 </section>
@@ -631,7 +817,42 @@
 
       <div class="info-cta">
         <p>문의 : 서울오라토리오 02-587-9271, 9277 · www.seouloratorio.or.kr</p>
-        <a href="https://nol.interpark.com/ticket" class="btn btn-primary" target="_blank" rel="noopener">NOL Ticket에서 예매하기</a>
+        <div class="info-cta-buttons">
+          <a href="https://www.sac.or.kr/site/main/show/show_view?SN=77560" class="btn btn-primary" target="_blank" rel="noopener">예술의전당에서 예매하기</a>
+          <a href="https://nol.interpark.com/ticket" class="btn btn-primary" target="_blank" rel="noopener">NOL Ticket에서 예매하기</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="directions" id="directions">
+  <div class="wrap">
+    <div class="kicker">LOCATION</div>
+    <h2 class="h2" style="margin-bottom:40px;">오시는 길</h2>
+
+    <div class="info-card">
+      <div class="info-grid">
+        <div class="info-block">
+          <dt>주소</dt>
+          <dd>서울 서초구 남부순환로 2406<br>예술의전당 콘서트홀</dd>
+        </div>
+        <div class="info-block">
+          <dt>지하철</dt>
+          <dd><b>3호선 남부터미널역</b> 5번 출구<br>마을버스 서초11·17·22번 환승(약 10분) 또는 도보 약 15분</dd>
+        </div>
+        <div class="info-block">
+          <dt>버스</dt>
+          <dd>간선 405, 406<br>지선 5413 · 직행 1500-2, 1553</dd>
+        </div>
+        <div class="info-block">
+          <dt>자가용</dt>
+          <dd>내비게이션 "예술의전당" 검색<br>지하 주차장 이용 (유료, 공연 관람객 할인 적용)</dd>
+        </div>
+      </div>
+
+      <div class="map-btn-wrap">
+        <a href="https://map.naver.com/p/search/예술의전당%20콘서트홀" class="btn btn-primary" target="_blank" rel="noopener">지도에서 보기</a>
       </div>
     </div>
   </div>
@@ -663,15 +884,27 @@
 <div class="poster-modal" id="posterModal">
   <div class="poster-modal-inner">
     <button class="poster-close" id="posterClose" aria-label="닫기">&times;</button>
-    <a href="https://raw.githubusercontent.com/seouloratorio/The-88th-Regular-Concert-of-Seouloratorio/main/%EC%A0%9C88%ED%9A%8C%20%EC%84%9C%EC%9A%B8%EC%98%A4%EB%9D%BC%ED%86%A0%EB%A6%AC%EC%98%A4%20%EC%A0%95%EA%B8%B0%EC%97%B0%EC%A3%BC%ED%9A%8C%20%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg" target="_blank" rel="noopener">
-      <img src="assets/poster.jpg" alt="제88회 서울오라토리오 정기연주회 포스터 · 멘델스존 엘리야">
+    <a href="https://raw.githubusercontent.com/seouloratorio/The-88th-Regular-Concert-of-Seouloratorio/main/88thSeouloratorioRagularConcert.jpg" target="_blank" rel="noopener">
+      <img src="https://raw.githubusercontent.com/seouloratorio/The-88th-Regular-Concert-of-Seouloratorio/main/88thSeouloratorioRagularConcert.jpg" alt="제88회 서울오라토리오 정기연주회 포스터 · 멘델스존 엘리야">
     </a>
+  </div>
+</div>
+
+<div class="artist-modal" id="artistModal">
+  <div class="artist-modal-inner">
+    <button class="artist-close" id="artistClose" aria-label="닫기">&times;</button>
+    <div class="artist-modal-photo"><img id="artistModalImg" src="" alt=""></div>
+    <div class="artist-modal-body">
+      <div class="artist-modal-role" id="artistModalRole"></div>
+      <div class="artist-modal-name" id="artistModalName"></div>
+      <dl class="artist-modal-bio" id="artistModalBio"></dl>
+    </div>
   </div>
 </div>
 
 <script>
   const navLinks = document.querySelectorAll('#navLinks button[data-section]');
-  const sections = ['top','about','cast','info'].map(id => document.getElementById(id));
+  const sections = ['top','about','cast','info','directions'].map(id => document.getElementById(id));
 
   document.querySelectorAll('button[data-target]').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -686,6 +919,36 @@
       if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
     }
     navLinks.forEach(a => a.classList.toggle('active', a.dataset.section === current));
+  });
+
+  const artistModal = document.getElementById('artistModal');
+  const artistClose = document.getElementById('artistClose');
+  const artistModalImg = document.getElementById('artistModalImg');
+  const artistModalRole = document.getElementById('artistModalRole');
+  const artistModalName = document.getElementById('artistModalName');
+  const artistModalBio = document.getElementById('artistModalBio');
+
+  const openArtist = (card) => {
+    const img = card.querySelector('.cast-photo img');
+    artistModalImg.src = img.src;
+    artistModalImg.alt = img.alt;
+    artistModalRole.textContent = card.querySelector('.cast-role').textContent;
+    artistModalName.textContent = card.querySelector('.cast-name').textContent;
+    artistModalBio.innerHTML = card.querySelector('.cast-bio').innerHTML;
+    artistModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+  const closeArtist = () => {
+    artistModal.classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  document.querySelectorAll('.cast-card.has-bio .cast-photo').forEach(photo => {
+    photo.addEventListener('click', () => openArtist(photo.closest('.cast-card')));
+  });
+  artistClose.addEventListener('click', closeArtist);
+  artistModal.addEventListener('click', (e) => {
+    if (e.target === artistModal) closeArtist();
   });
 
   const posterModal = document.getElementById('posterModal');
@@ -705,7 +968,7 @@
     if (e.target === posterModal) closePoster();
   });
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closePoster();
+    if (e.key === 'Escape'){ closePoster(); closeArtist(); }
   });
 </script>
 
