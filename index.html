@@ -161,7 +161,14 @@
   }
   .poster-close:hover{color:var(--gold-soft); border-color:var(--gold);}
   @media (max-width:600px){
-    .poster-close{top:auto; bottom:-52px; right:0;}
+    .poster-close{
+      position:fixed;
+      top:14px;
+      right:14px;
+      bottom:auto;
+      z-index:210;
+      background:rgba(22,16,9,0.85);
+    }
   }
 
   /* ---------- ARTIST PROFILE MODAL ---------- */
@@ -511,7 +518,7 @@
     list-style:disc;
   }
   @media (max-width:700px){
-    .cast-grid{grid-template-columns:repeat(2,1fr);}
+    .cast-grid{grid-template-columns:1fr;}
     .cast-head{flex-direction:column; align-items:flex-start;}
     .ensembles{text-align:left;}
   }
