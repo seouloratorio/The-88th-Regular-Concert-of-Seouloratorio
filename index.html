@@ -446,8 +446,13 @@
   }
 
   /* ---------- ABOUT ORG ---------- */
-  .about-org{background:var(--bg-panel); text-align:center; padding-top:0;}
-  .about-org .h2{margin:0 auto 36px;}
+  .about-org-inline{
+    text-align:center;
+    margin-top:72px;
+    padding-top:56px;
+    border-top:1px solid var(--line);
+  }
+  .about-org-inline .h2{margin:0 auto 36px;}
   .org-photo{
     max-width:680px;
     margin:0 auto;
@@ -819,17 +824,15 @@
   </div>
 </div>
     </div>
-  </div>
-</section>
 
-<section class="about-org" id="about-org">
-  <div class="wrap">
-    <div class="kicker">ENSEMBLE</div>
-    <h2 class="h2">서울오라토리오</h2>
-    <div class="org-photo" id="orgPhotoTrigger">
-      <img src="https://raw.githubusercontent.com/seouloratorio/The-88th-Regular-Concert-of-Seouloratorio/main/seouloratorio.jpg" alt="서울오라토리오 합창단과 오케스트라 연주 모습">
+    <div class="about-org-inline">
+      <div class="kicker">ENSEMBLE</div>
+      <h2 class="h2">서울오라토리오</h2>
+      <div class="org-photo" id="orgPhotoTrigger">
+        <img src="https://raw.githubusercontent.com/seouloratorio/The-88th-Regular-Concert-of-Seouloratorio/main/seouloratorio.jpg" alt="서울오라토리오 합창단과 오케스트라 연주 모습">
+      </div>
+      <p class="org-hint">사진을 클릭하면 소개를 볼 수 있습니다</p>
     </div>
-    <p class="org-hint">사진을 클릭하면 소개를 볼 수 있습니다</p>
   </div>
 </section>
 
